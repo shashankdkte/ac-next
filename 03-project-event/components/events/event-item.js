@@ -6,13 +6,13 @@ import DateIcon from '../icons/date-icon';
 import AddressIcon from '../icons/address-icon';
 import ArrowRightIcon from '../icons/arrow-right-icon';
 const EventItem = (props) => {
-  const { title, image, date, location, id } = props;
+  const { title, image, date, address, id } = props;
   const humanReadableDate = new Date(date).toLocaleDateString('en-US', {
     day: "numeric",
     month: "long",
     year:"numeric"
   })
-  const formattedAdress = location.replace(", ", "\n");
+  const formattedAdress = address.replace(", ", "\n");
   const exploreLink = `/events/${id}`;
   return (
     <li className={classes.item}> 
