@@ -1,12 +1,12 @@
 import fs from "fs";
 import path from "path";
 
-function getPath()
+ export function getPath()
 {
   return path.join(process.cwd(), 'data', 'feedback.json');
 }
 
-function getData(filePath)
+export function getData(filePath)
 {
   
   const fileData = fs.readFileSync(filePath);
