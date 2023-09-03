@@ -1,6 +1,18 @@
 import fs from "fs";
 import path from "path";
 
+function getPath()
+{
+  return path.join(process.cwd(), 'data', 'feedback.json');
+}
+
+function getData(filePath)
+{
+  
+  const fileData = fs.readFileSync(filePath);
+  const data = JSON.parse(fileData);
+  return data;
+}
 function handler(req, res) {
 
   if (req.method === "POST")
@@ -14,9 +26,8 @@ function handler(req, res) {
     };
 
     //store in a database or a file
-    const filePath = path.join(process.cwd(), 'data', 'feedback.json');
-    const fileData = fs.readFileSync(filePath);
-    const data = JSON.parse(fileData);
+    const filePath = getPath();
+    const data = getData(filePath)
     data.push(newFeedback);
     fs.writeFileSync(filePath, JSON.stringify(data));
     res.status(201).json({
@@ -26,8 +37,11 @@ function handler(req, res) {
   }
   else
   {
+     const filePath = getPath();
+    const data = getData(filePath)
+    console.log(data);
     res.status(200).json({
-      message: "This works"
+      data: data
     })
   }
 };
