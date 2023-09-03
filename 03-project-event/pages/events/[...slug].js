@@ -47,8 +47,6 @@ if(props.hasError)
   }
 
   const date = new Date(props.date.year, props.date.month - 1);
-  console.log(date);
-  console.log(filteredEvents);
   return (<Fragment>
     <ResultsTitle date={date} />
     <EventList  items={filteredEvents}/>
